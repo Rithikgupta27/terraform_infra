@@ -74,7 +74,7 @@ resource "aws_route_table" "nginx-public-route-tb" {
   }
 
   tags = {
-    Name = nginx-public-route-tb
+    Name = "nginx-public-route-tb"
   }
 
 }
@@ -110,5 +110,4 @@ resource "aws_route_table_association" "private-subnet-association-1" {
 resource "aws_route_table_association" "private-subnet-association-2" {
    subnet_id = aws_subnet.private-subnet-2.id
    route_table_id = aws_route_table.nginx-private-route-tb.id
-}
 }
