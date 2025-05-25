@@ -68,7 +68,7 @@ resource "aws_nat_gateway" "nginx-ngw" {
 resource "aws_route_table" "nginx-public-route-tb" {
   vpc_id = aws_vpc.nginx-demo.id
 
-  route = {
+  route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.nginx-igw.id
   }
@@ -82,9 +82,9 @@ resource "aws_route_table" "nginx-public-route-tb" {
 resource "aws_route_table" "nginx-private-route-tb" {
   vpc_id = aws_vpc.nginx-demo.id
 
-  route = {
-    cidr_block = "10.0.0.0/16"
-    gateway_id =  aws_internet_gateway.nginx-igw.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id =  aws_nat_gateway.nginx-ngw.id
   }
 
   tags = {
